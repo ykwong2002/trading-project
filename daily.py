@@ -1,6 +1,8 @@
 import requests
 import os
 from transformers import pipeline
+from dotenv import load_dotenv
+load_dotenv()
 
 pipe = pipeline("text-classification", model="ProsusAI/finbert")
 
@@ -17,8 +19,7 @@ def get_day_sentiment(keyword: str, from_date: str, to_date: str) -> float:
         Sentiment: The sentiment of the keyword for the given day. (can be positive, negative, or neutral)
         Sentiment Score: The score of the sentiment of the keyword for the given day. (0.0 to 1.0)
     """
-    openai_apikey = os.getenv("OPENAI_API_KEY")
-    API_KEY = open('API_KEY').read()
+    API_KEY = os.getenv('API_KEY')
     POS_THRESHOLD = 0.15
     NEG_THRESHOLD = -0.15
 
