@@ -42,8 +42,13 @@ def get_day_sentiment(keyword: str, from_date: str, to_date: str) -> float:
     response = requests.get(url)
 
     articles = response.json()['articles']
-    #Filter articles to only include articles that contain keyword in title or description
-    articles = [article for article in articles if keyword.lower() in article['title'].lower() or keyword.lower() in article['description'].lower()]
+    # Filter articles to only include articles that contain keyword in title or description
+    articles = [
+        article 
+        for article in articles 
+        if keyword.lower() in (article['title'] or '').lower() 
+        or keyword.lower() in (article['description'] or '').lower()
+        ]
 
     for i, article in enumerate(articles):
         print(f"Title: {article['title']}")

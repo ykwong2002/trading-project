@@ -1,0 +1,27 @@
+- Do not use RLVR to update FinBERT model
+    - Market can go up when bad sentiment, or go down when good sentiment
+    - Do not confuse model with market randomness
+
+- instead, only use RLVR in the decision policy layer (contextual bandit since single step)
+
+- Get data from news article given keyword
+- Get daily sentiment
+- Get daily open and close (to check if increase or decrease)
+- Get 30 day sentiment and open and close
+- Implement lightweight policy per keyword
+    - Each head outputs binary action (UP / DOWN)
+    - Each head independenly trainable while sharing same backbone features
+- RLVR (Contextual Bandit Problem)
+    - After market close, compute verified reward
+    - +1 if prediction direction matches movement of the day
+    - -1 otherwise
+    - Update only keyword-specific policy head using reward
+    - DO NOT FINETUNE FINBERT
+- Set up PyTorch for policy head tuning
+    - input: features from FinBERT backbone
+    - output: probabilities of UP / DOWN
+    - learns via reinforcement learning with verifiable rewards
+- evaluation:
+    - track accuracy, sumulative rewar and rolling Sharpe metrics for each keyword
+- optional:
+    - maybe can expand to LSTM?
