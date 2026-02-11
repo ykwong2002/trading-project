@@ -1,6 +1,0 @@
-requests
-transformers
-torch
-feedparser
-python-dotnev
-yfinance
