@@ -4,7 +4,7 @@ import pandas_ta as ta
 def load_and_preprocess_data(csv_path: str) -> pd.DataFrame:
     """
     Loads EURUSD data from CSV and preprocess it by adding technical indicators.
-    Expects these columns: GMT Time, O, H, L, C, V
+    Expects these columns: [GMT Time, O, H, L, C, V]
     """
     df = pd.read_csv(csv_path, parse_dates=True, index_col='Gmt time')
 
