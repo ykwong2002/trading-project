@@ -1,6 +1,8 @@
 numpy
 pandas
 pandas-ta
-gym
+gymnasium
+shimmy
 stable-baselines3
+tensorboard
 matplotlib

@@ -52,7 +52,7 @@ def main():
     
     # Plot final equity curve
     plt.figure(figsize=(10,6))
-    plt.plot(equity_surve, label='Equity')
+    plt.plot(equity_curve, label='Equity')
     plt.title('Equity Curve during Evaluation')
     plt.xlabel('Time Steps')
     plt.ylabel('Equity')
