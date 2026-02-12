@@ -8,7 +8,7 @@ from trading_env import TradingEnv
 
 def main():
     # Load and preprocess data
-    df = load_and_preprocess_data("data/EURUSD_1h.csv")
+    df = load_and_preprocess_data("data/EURUSD_Candlestick_1_Hour_BID_01.07.2020-15.07.2023.csv")
 
     # Create environment
     env = TradingEnv(df=df,
